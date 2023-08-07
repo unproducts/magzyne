@@ -1,0 +1,27 @@
+{
+  "name": "@magzyne/web-layer",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev .playground",
+    "build": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "lint": "eslint .",
+    "postinstall": "nuxt prepare .playground"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^3.5.1",
+    "eslint": "^8.28.0",
+    "nuxt": "^3.6.2",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "url": "^0.11.1"
+  }
+}
