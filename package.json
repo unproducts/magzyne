@@ -1,0 +1,10 @@
+{
+  "name": "magzyne",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "author": "Aman Desai (amandesai01@gmail.com)",
+  "license": "MIT"
+}
