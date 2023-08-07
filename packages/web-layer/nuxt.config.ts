@@ -6,7 +6,7 @@ import { join, dirname } from "path";
 const currentPath = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
-  css: [join(currentPath, "assets/css/main.css")],
+  css: [join(currentPath, "main.css")],
   postcss: {
     plugins: {
       tailwindcss: {},
