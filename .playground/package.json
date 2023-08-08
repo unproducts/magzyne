@@ -1,0 +1,13 @@
+{
+  "name": "magzyne-playground",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.6.5"
+  }
+}
