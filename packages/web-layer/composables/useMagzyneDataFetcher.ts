@@ -1,3 +1,5 @@
+import { GithubDataSource } from "../app.config";
+
 export type NewsItem = {
   title: string;
   description?: string;
@@ -12,7 +14,9 @@ export type NewsItemRaw = NewsItem & {
 };
 
 export default function () {
-  const { dataSource } = useAppConfig();
+  const config = useAppConfig();
+
+  const dataSource = config.dataSource as GithubDataSource;
 
   const newsData = ref<NewsItem[]>([]);
   const newsDataLoading = ref(false);
