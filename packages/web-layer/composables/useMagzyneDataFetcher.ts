@@ -3,7 +3,7 @@ export type NewsItem = {
   description?: string;
   url: string;
   image?: string;
-  source?: string;
+  source: string;
   date?: Date;
 };
 

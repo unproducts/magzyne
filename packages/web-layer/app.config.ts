@@ -10,17 +10,19 @@ export default defineAppConfig({
   }
 })
 
+export type GithubDataSource = {
+  ghAdminUsername?: string,
+  ghRepoUsername: string,
+  ghRepoName: string,
+  ghDsIssueNumber: number,
+}
+
 declare module '@nuxt/schema' {
   interface AppConfigInput {
     site: {
       name: string,
     },
-    dataSource: {
-      ghAdminUsername: string,
-      ghRepoUsername: string,
-      ghRepoName: string,
-      ghDsIssueNumber: number,
-    },
+    dataSource: GithubDataSource,
     appContext?: {
       initialScrapeDate?: Date,
     }
