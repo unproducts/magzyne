@@ -6,11 +6,10 @@ import { join, dirname } from "path";
 const currentPath = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
-  css: [join(currentPath, "main.css")],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
+  modules: ['@nuxtjs/tailwindcss'],
+  // @ts-ignore
+  tailwindcss: {
+    configPath: join(currentPath, 'tailwind.config.js'),
+    cssPath: join(currentPath, 'main.css'),
+  }
 });

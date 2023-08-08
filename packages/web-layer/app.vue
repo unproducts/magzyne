@@ -1,5 +1,7 @@
 <script setup lang="ts">
+// @ts-ignore [Vue] Property or method "useAppConfig" is not defined on the instance but referenced during render.
 const app = useAppConfig()
+// @ts-ignore [Vue] Property or method "useMagzyneDataFetcher" is not defined on the instance but referenced during render.
 const { newsData, newsDataError, newsDataLoading } = useMagzyneDataFetcher();
 </script>
 
