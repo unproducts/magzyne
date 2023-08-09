@@ -39,11 +39,12 @@ export default function () {
           hasMorePages.value = false;
           return;
         }
-        const fetchedNewsData: NewsItem[] = [];
 
-        for (let index = 0; index < data.length; index++) {
+        for (let index = data.length - 1; index >= 0; index--) {
           const comment = data[index].body as string;
           const newsItemsSerialized = comment.split(";;;");
+
+          const fetchedNewsData: NewsItem[] = [];
 
           for (let index2 = 0; index2 < newsItemsSerialized.length; index2++) {
             const newsItemSerialized = newsItemsSerialized[index2].split(";;");
