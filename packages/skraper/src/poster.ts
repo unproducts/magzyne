@@ -7,16 +7,21 @@ export type GithubDataSource = {
   ghRepoUsername: string;
   ghRepoName: string;
   ghDsIssueNumber: number;
-  ghPersonalAccessToken: string
+  ghPersonalAccessToken: string;
 };
 
 export const postNewsItems = async (
   newsItems: NewsItem[],
   githubDataSource: GithubDataSource,
-  isFirstScrape: boolean,
+  isFirstScrape: boolean
 ) => {
-  let { ghAdminUsername, ghRepoUsername, ghRepoName, ghDsIssueNumber, ghPersonalAccessToken } =
-    githubDataSource;
+  let {
+    ghAdminUsername,
+    ghRepoUsername,
+    ghRepoName,
+    ghDsIssueNumber,
+    ghPersonalAccessToken,
+  } = githubDataSource;
   if (!ghAdminUsername) {
     ghAdminUsername = ghRepoUsername;
   }
@@ -27,6 +32,11 @@ export const postNewsItems = async (
     newsItems = newsItems.filter((n) => n.date >= scrapeAsOf);
   }
 
+  if (newsItems.length === 0) {
+    console.log("No news items to post.");
+    return;
+  }
+
   const encodedNewsItems = encodeNewsItems(newsItems);
 
   const githubIssuesApiURL = `https://api.github.com/repos/${ghRepoUsername}/${ghRepoName}/issues/${ghDsIssueNumber}`;
@@ -35,11 +45,15 @@ export const postNewsItems = async (
     headers: {
       Authorization: `Bearer ${ghPersonalAccessToken}`,
     },
-  })
-  
-  const response = await axiosInstance.post("/comments", {
-    body: encodedNewsItems,
   });
+
+  const response = await axiosInstance
+    .post("/comments", {
+      body: encodedNewsItems,
+    })
+    .catch((err) => {
+      console.error(err);
+    }) as any;
 
   if (response.status !== 201) {
     console.error(response.data);
