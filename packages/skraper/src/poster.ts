@@ -11,7 +11,7 @@ export type GithubDataSource = {
 };
 
 export const postNewsItems = async (
-  newsItems: NewsItem[],
+  newsItemsRaw: NewsItem[],
   githubDataSource: GithubDataSource,
   isFirstScrape: boolean
 ) => {
@@ -22,6 +22,12 @@ export const postNewsItems = async (
     ghDsIssueNumber,
     ghPersonalAccessToken,
   } = githubDataSource;
+
+  let newsItems = newsItemsRaw.map((n) => ({
+    ...n,
+    date: new Date(n.date),
+  }));
+
   if (!ghAdminUsername) {
     ghAdminUsername = ghRepoUsername;
   }

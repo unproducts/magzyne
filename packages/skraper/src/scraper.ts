@@ -10,12 +10,7 @@ export type NewsItem = {
   source: string;
   date: Date;
 };
-
-export type NewsItemRaw = NewsItem & {
-  date: string;
-};
-
-export type NewsItemScraped = Omit<NewsItemRaw, "source">;
+export type NewsItemScraped = Omit<NewsItem, "source">;
 
 export type ScrapeExecutor = (
   $: CheerioAPI,
@@ -27,6 +22,7 @@ export type Scraper = {
   sourceId: string;
   url: string;
   execute: ScrapeExecutor;
+  isXML?: boolean;
 };
 
 const scrapers: Scraper[] = [];
@@ -35,8 +31,8 @@ export function registerScraper(scraper: Scraper) {
   scrapers.push(scraper);
 }
 
-export async function scrapeNow(): Promise<NewsItemRaw[]> {
-  const newsItems: NewsItemRaw[] = [];
+export async function scrapeNow(): Promise<NewsItem[]> {
+  const newsItems: NewsItem[] = [];
   const scraperPromises: Promise<void>[] = [];
 
   for (let index = 0; index < scrapers.length; index++) {
@@ -48,7 +44,9 @@ export async function scrapeNow(): Promise<NewsItemRaw[]> {
 
     const response = await axios.get("");
     const htmlContent = response.data;
-    const $ = cheerio.load(htmlContent);
+    const $ = cheerio.load(htmlContent, {
+      xmlMode: scraper.isXML,
+    });
 
     const registerNewItemFn = (n: NewsItemScraped) => {
       newsItems.push({
