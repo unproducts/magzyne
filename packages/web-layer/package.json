@@ -16,6 +16,8 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "url": "^0.11.1"
+    "url": "^0.11.1",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "daisyui": "^3.5.1"
   }
 }
