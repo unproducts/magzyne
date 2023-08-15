@@ -1,3 +1,100 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a dark background for dark mode */
+body {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    font-family: Arial, sans-serif;
+}
+
+/* Style for the navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    padding: 15px 20px;
+    justify-content: space-between;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-title {
+    font-size: 28px;
+    color: #bbb; /* Light gray text color */
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.article {
+    border: 1px solid #444; /* Darker border color */
+    background-color: #1f1f1f; /* Darker background for cards */
+    padding: 25px;
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added transition */
+    position: relative; /* Add relative positioning to the article card */
+}
+
+.article img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px; /* Rounded image corners */
+}
+
+.article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #e0e0e0; /* Light text color */
+}
+
+.article p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #999; /* Light gray text color */
+}
+
+.article a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover effect for article cards */
+.article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+.article-source {
+    display: inline-block;
+    background-color: #FF6347; /* Background color for the source tag */
+    color: #fff !important; /* Text color for the source tag */
+    padding: 2px 4px;
+    border-radius: 15px; /* Rounded corners */
+    font-size: 0.8rem !important;
+    margin-top: 10px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom */
+    left: 10px; /* Adjust the distance from the left */
+    z-index: 1; /* Ensure the source tag is above other content */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
